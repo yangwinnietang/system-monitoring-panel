@@ -1,18 +1,18 @@
 # 系统监控面板
 
-![系统监控面板预览](C:\Users\Winnie\Desktop\GLM\imgs\Snipaste_2025-09-20_13-54-35.png)
+![系统监控面板预览](./imgs/Snipaste_2025-09-20_13-54-35.png)
 
 ## 📖 设计说明
 
-### 技术选型
+### 🛠️ 技术选型
 
 本项目采用React 18 + TypeScript + Vite作为基础技术栈，使用Zustand进行状态管理，ECharts实现数据可视化，SASS处理样式，确保了高性能、类型安全和开发效率。
 
-### AI使用方式
+### 🤖 AI使用方式
 
 通过6A工作流（Align、Architect、Atomize、Approve、Automate、Assess）进行项目开发。执行开发AI负责需求分析、架构设计、任务拆分、代码实现和质量评估，实现了高效的自动化开发流程。采用Claude Code+GLM4.5和Trae-CN内置的GLM4.5模型进行综合开发，主要有如下考虑，Claude Code+GLM4.5具有极强的上下文能力，可以处理长文本，工作流清晰；使用Trae-CN内置的GLM4.5模型进行文档撰写，可视性强，交互性好。
 
-### 关键收获
+### 🎯 关键收获
 
 模块化设计提高了代码可维护性，TypeScript类型系统增强了代码健壮性，实时数据流管理实现了流畅的用户体验，响应式设计确保了多设备适配，AI辅助开发显著提升了开发效率和质量。
 
