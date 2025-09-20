@@ -1,0 +1,417 @@
+.sidebar {
+  background: linear-gradient(180deg, var(--secondary-bg) 0%, #1a1d2e 100%);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: var(--sidebar-width);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  }
+}
+
+// Logo Section
+.logoSection {
+  padding: 24px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--accent-blue), #00a8cc);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.logoText {
+  flex: 1;
+}
+
+.logoTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.logoSubtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  line-height: 1.2;
+}
+
+// Navigation
+.navigation {
+  flex: 1;
+  padding: 20px 16px;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--accent-blue);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 212, 255, 0.3);
+    color: var(--text-primary);
+    transform: translateX(4px);
+
+    &::before {
+      transform: translateX(0);
+    }
+
+    .navIcon {
+      color: var(--accent-blue);
+      transform: scale(1.1);
+    }
+
+    .navDescription {
+      opacity: 1;
+    }
+  }
+}
+
+.navItemActive {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: var(--accent-blue);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+
+  &::before {
+    transform: translateX(0);
+  }
+
+  .navIcon {
+    color: var(--accent-blue);
+  }
+
+  .navDescription {
+    opacity: 1;
+  }
+}
+
+.navIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.navContent {
+  flex: 1;
+  margin-left: 12px;
+  min-width: 0;
+}
+
+.navLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+  line-height: 1.2;
+}
+
+.navDescription {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  line-height: 1.2;
+  margin-top: 2px;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.navBadge {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(135deg, #ff4757, #ff3742);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
+  animation: pulse 2s infinite;
+}
+
+// Status Panel
+.statusPanel {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.2);
+  margin-top: auto;
+}
+
+.statusHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.statusTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+
+  svg {
+    color: var(--accent-blue);
+  }
+}
+
+.statusToggle {
+  transition: transform 0.3s ease;
+  color: var(--text-secondary);
+
+  &Expanded {
+    transform: rotate(180deg);
+  }
+}
+
+.statusContent {
+  padding: 0 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.statusItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.statusInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.statusLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.statusValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.statusWarning {
+  color: var(--status-warning);
+}
+
+.statusProgress {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.statusProgressBar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-blue), #00a8cc);
+  border-radius: 3px;
+  transition: width 0.6s ease;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+  }
+}
+
+.statusProgressBarWarning {
+  background: linear-gradient(90deg, var(--status-warning), #ff9f43);
+}
+
+// Animations
+@keyframes pulse {
+  0% { box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4); }
+  50% { box-shadow: 0 2px 12px rgba(255, 71, 87, 0.6); }
+  100% { box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .logoText {
+    .logoSubtitle {
+      display: none;
+    }
+  }
+
+  .navDescription {
+    display: none;
+  }
+
+  .navItem {
+    padding: 10px 12px;
+  }
+
+  .navContent {
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+
+    &.mobile-open {
+      transform: translateX(0);
+    }
+  }
+
+  .logoSection {
+    padding: 20px 16px;
+  }
+
+  .navigation {
+    padding: 16px 12px;
+  }
+
+  .statusPanel {
+    .statusContent {
+      padding: 0 16px 16px;
+    }
+  }
+
+  .navItem:hover {
+    transform: none;
+  }
+}
+
+// Mobile specific styles
+@media (max-width: 480px) {
+  .logo {
+    .logoText {
+      display: none;
+    }
+  }
+
+  .navContent {
+    display: none;
+  }
+
+  .navItem {
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .navBadge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+// Dark mode optimization
+@media (prefers-color-scheme: dark) {
+  .sidebar {
+    background: linear-gradient(180deg, #1a1d2e 0%, #0f1629 100%);
+  }
+}

@@ -1,0 +1,185 @@
+.chartContainer {
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.updateTime {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--primary-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.chart {
+  flex: 1;
+  min-height: 300px;
+  width: 100%;
+
+  // Override ECharts default styles for dark theme
+  :global(.echarts-tooltip) {
+    background: rgba(10, 14, 39, 0.95) !important;
+    border: 1px solid var(--accent-blue) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  :global(.echarts-tooltip .echarts-tooltip-title) {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+  }
+
+  :global(.echarts-tooltip .echarts-tooltip-value) {
+    color: var(--accent-blue) !important;
+    font-weight: 500 !important;
+  }
+
+  :global(.echarts-legend) {
+    color: var(--text-secondary) !important;
+  }
+
+  :global(.echarts-legend-item) {
+    color: var(--text-secondary) !important;
+
+    &:hover {
+      color: var(--text-primary) !important;
+    }
+  }
+
+  :global(.echarts-axis-line) {
+    stroke: var(--border-color) !important;
+  }
+
+  :global(.echarts-axis-label) {
+    fill: var(--text-secondary) !important;
+  }
+
+  :global(.echarts-split-line) {
+    stroke: var(--border-color) !important;
+    stroke-dasharray: 4 4 !important;
+  }
+
+  :global(.echarts-grid) {
+    stroke: var(--border-color) !important;
+  }
+}
+
+// Loading state
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--text-secondary);
+  font-size: 14px;
+
+  &::before {
+    content: '加载图表数据...';
+  }
+}
+
+// Animation for data updates
+@keyframes chartUpdate {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.updating {
+  animation: chartUpdate 0.5s ease-in-out;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .chartContainer {
+    padding: 15px;
+  }
+
+  .chartHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .chart {
+    min-height: 250px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .updateTime {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart {
+    min-height: 200px;
+  }
+
+  .chartContainer {
+    padding: 12px;
+  }
+}
+
+// Chart container optimization
+.chart {
+  position: relative;
+
+  // Prevent flash of unstyled content
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    z-index: -1;
+  }
+}
+
+// Touch-friendly interaction for mobile
+@media (hover: none) {
+  .chart {
+    cursor: pointer;
+  }
+}
+
+// Print styles
+@media print {
+  .chartContainer {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    color: black !important;
+  }
+
+  .title {
+    color: black !important;
+  }
+
+  .updateTime {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+  }
+}

@@ -1,0 +1,268 @@
+.dashboard {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--primary-bg);
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.topSection {
+  height: 30%;
+  min-height: 250px;
+}
+
+.bottomSection {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  min-height: 0;
+}
+
+.leftSection {
+  flex: 0 0 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSection {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.searchSection {
+  flex: 0 0 60%;
+  min-height: 0;
+}
+
+.alertSection {
+  flex: 0 0 40%;
+  min-height: 0;
+}
+
+.systemStatusPanel,
+.taskPanel,
+.searchPanel,
+.alertPanel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.controlsOverlay {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  z-index: 100;
+  background: rgba(26, 29, 62, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.streamControls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.controlGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.controlLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  min-width: 60px;
+}
+
+.controlButton {
+  flex: 1;
+  padding: 6px 12px;
+  background: var(--primary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-1px);
+  }
+
+  &.active {
+    background: var(--accent-blue);
+    color: var(--primary-bg);
+    border-color: var(--accent-blue);
+  }
+}
+
+.intervalSelect {
+  flex: 1;
+  padding: 6px 8px;
+  background: var(--primary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+
+  &:focus {
+    border-color: var(--accent-blue);
+  }
+}
+
+.refreshButton {
+  width: 100%;
+  padding: 8px;
+  background: var(--accent-blue);
+  color: var(--primary-bg);
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #00a8cc;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .bottomSection {
+    flex-direction: column;
+  }
+
+  .leftSection,
+  .rightSection {
+    flex: 1;
+    width: 100%;
+  }
+
+  .rightSection {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .searchSection,
+  .alertSection {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .topSection {
+    height: 40%;
+    min-height: 200px;
+  }
+
+  .bottomSection {
+    gap: 15px;
+  }
+
+  .rightSection {
+    flex-direction: column;
+  }
+
+  .controlsOverlay {
+    top: auto;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+    max-width: none;
+  }
+
+  .streamControls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .controlGroup {
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContent {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .topSection {
+    height: 35%;
+    min-height: 180px;
+  }
+
+  .controlsOverlay {
+    padding: 12px;
+  }
+
+  .streamControls {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .controlGroup {
+    width: 100%;
+  }
+}
+
+// Scrollbar styling for nested components
+.mainContent *::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mainContent *::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+  border-radius: 3px;
+}
+
+.mainContent *::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+
+  &:hover {
+    background: var(--accent-blue);
+  }
+}
+
+// Animation for data updates
+@keyframes dataUpdate {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.updating {
+  animation: dataUpdate 0.5s ease-in-out;
+}

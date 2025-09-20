@@ -1,0 +1,403 @@
+.chartDashboard {
+  background: var(--primary-bg);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--text-primary);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.stats {
+  display: flex;
+  gap: 16px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 60px;
+}
+
+.statLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'Monaco', 'Menlo', monospace;
+
+  &.running {
+    color: var(--accent-blue);
+  }
+
+  &.critical {
+    color: #ff4444;
+    animation: pulse 2s infinite;
+  }
+
+  &.completed {
+    color: #00ff88;
+  }
+
+  &.high {
+    color: #ffa500;
+  }
+
+  &.warning {
+    color: var(--accent-blue);
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.tabContainer {
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  background: var(--secondary-bg);
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+}
+
+.tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  .tabIcon {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--text-primary);
+  }
+
+  &.active {
+    background: var(--accent-blue);
+    color: var(--primary-bg);
+    box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+  }
+}
+
+.chartContent {
+  flex: 1;
+  min-height: 0;
+  margin-bottom: 20px;
+}
+
+.chartGrid {
+  height: 100%;
+  display: grid;
+  gap: 16px;
+}
+
+.chartCard {
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.1);
+  }
+}
+
+.fullHeightChart {
+  height: 100%;
+}
+
+.infoPanel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 20px;
+}
+
+.infoSection {
+  background: var(--secondary-bg);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+}
+
+.infoTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  color: var(--text-primary);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.infoLabel {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.infoValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-family: 'Monaco', 'Menlo', monospace;
+
+  &.running {
+    color: var(--accent-blue);
+  }
+
+  &.critical {
+    color: #ff4444;
+  }
+
+  &.completed {
+    color: #00ff88;
+  }
+
+  &.high {
+    color: #ffa500;
+  }
+
+  &.warning {
+    color: var(--accent-blue);
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .infoPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .infoGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .chartDashboard {
+    padding: 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .stats {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .statItem {
+    min-width: 50px;
+  }
+
+  .statLabel {
+    font-size: 10px;
+  }
+
+  .statValue {
+    font-size: 14px;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .tab {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .chartContent {
+    margin-bottom: 15px;
+  }
+
+  .infoPanel {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-top: 15px;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .infoItem {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .infoLabel {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .chartDashboard {
+    padding: 12px;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .statItem {
+    min-width: 45px;
+  }
+
+  .tab {
+    font-size: 12px;
+    padding: 6px 10px;
+
+    .tabIcon {
+      font-size: 14px;
+    }
+  }
+
+  .infoSection {
+    padding: 12px;
+  }
+
+  .infoTitle {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+}
+
+// Loading states
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--text-secondary);
+  font-size: 14px;
+
+  &::before {
+    content: '加载数据中...';
+  }
+}
+
+// Animation for tab transitions
+.chartContent {
+  position: relative;
+
+  .chartCard {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Print styles
+@media print {
+  .chartDashboard {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    color: black !important;
+  }
+
+  .title {
+    color: black !important;
+  }
+
+  .tab {
+    border-color: #999 !important;
+    color: #333 !important;
+
+    &.active {
+      background: #0066cc !important;
+      color: white !important;
+    }
+  }
+
+  .chartCard {
+    background: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .infoSection {
+    background: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .statValue,
+  .infoValue {
+    color: #333 !important;
+  }
+}

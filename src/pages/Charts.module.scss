@@ -1,0 +1,38 @@
+.chartsPage {
+  height: 100vh;
+  background: var(--primary-bg);
+  padding: 20px;
+  overflow: hidden;
+}
+
+.content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartDashboard {
+  flex: 1;
+  min-height: 0;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .chartsPage {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chartsPage {
+    padding: 12px;
+  }
+}
+
+// Print styles
+@media print {
+  .chartsPage {
+    background: white !important;
+    padding: 20px !important;
+  }
+}

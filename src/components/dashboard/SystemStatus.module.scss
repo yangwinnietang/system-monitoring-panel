@@ -1,0 +1,212 @@
+.systemStatus {
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  padding: 20px;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.loadingText {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.lastUpdate {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--primary-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.metricCard {
+  background: var(--primary-bg);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.1);
+  }
+}
+
+.metricHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.metricName {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.statusBadge {
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &.normal {
+    background: rgba(0, 255, 0, 0.1);
+    color: #00ff00;
+  }
+
+  &.warning {
+    background: rgba(255, 165, 0, 0.1);
+    color: #ffa500;
+  }
+
+  &.critical {
+    background: rgba(255, 0, 0, 0.1);
+    color: #ff4444;
+  }
+}
+
+.metricValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+.metricDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+
+  span:first-child {
+    color: var(--text-secondary);
+  }
+
+  span:last-child {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+}
+
+.connectionInfo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.connectionStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.statValue {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent-blue);
+  font-family: 'Monaco', 'Menlo', monospace;
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .connectionInfo {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .systemStatus {
+    padding: 15px;
+  }
+
+  .metricsGrid {
+    gap: 12px;
+  }
+
+  .metricCard {
+    padding: 12px;
+  }
+
+  .metricValue {
+    font-size: 24px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+// Animation for value changes
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.metricValue {
+  transition: color 0.3s ease;
+
+  &.updating {
+    animation: pulse 0.5s ease-in-out;
+  }
+}

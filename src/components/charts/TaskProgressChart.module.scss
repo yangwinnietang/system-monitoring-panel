@@ -1,0 +1,193 @@
+.chartContainer {
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.stats {
+  display: flex;
+  gap: 8px;
+}
+
+.stat {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: var(--primary-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.running {
+  color: var(--accent-blue);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.chart {
+  flex: 1;
+  min-height: 300px;
+  width: 100%;
+
+  // Override ECharts styles for dark theme
+  :global(.echarts-tooltip) {
+    background: rgba(10, 14, 39, 0.95) !important;
+    border: 1px solid var(--accent-blue) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  :global(.echarts-legend) {
+    color: var(--text-secondary) !important;
+  }
+
+  :global(.echarts-axis-line) {
+    stroke: var(--border-color) !important;
+  }
+
+  :global(.echarts-axis-label) {
+    fill: var(--text-secondary) !important;
+  }
+
+  :global(.echarts-split-line) {
+    stroke: var(--border-color) !important;
+    stroke-dasharray: 4 4 !important;
+  }
+
+  :global(.echarts-bar) {
+    transition: all 0.3s ease !important;
+  }
+
+  :global(.echarts-bar:hover) {
+    filter: brightness(1.2) !important;
+  }
+}
+
+// Loading state
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--text-secondary);
+  font-size: 14px;
+
+  &::before {
+    content: '加载任务数据...';
+  }
+}
+
+// Animation for data updates
+@keyframes chartUpdate {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.updating {
+  animation: chartUpdate 0.5s ease-in-out;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .chartContainer {
+    padding: 15px;
+  }
+
+  .chartHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .chart {
+    min-height: 250px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart {
+    min-height: 200px;
+  }
+
+  .chartContainer {
+    padding: 12px;
+  }
+
+  .stats {
+    gap: 6px;
+  }
+}
+
+// Empty state
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--text-secondary);
+  text-align: center;
+
+  .emptyIcon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .emptyText {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .emptyHint {
+    font-size: 12px;
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+}
+
+// Print styles
+@media print {
+  .chartContainer {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    color: black !important;
+  }
+
+  .title {
+    color: black !important;
+  }
+
+  .stat {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+  }
+}

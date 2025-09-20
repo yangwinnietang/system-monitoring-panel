@@ -1,0 +1,100 @@
+// CSS Variables for System Monitoring Panel
+
+:root {
+  // Colors
+  --primary-bg: #0a0e27;
+  --secondary-bg: #1a1d3e;
+  --tertiary-bg: #252848;
+  --accent-blue: #00d4ff;
+  --success-green: #00ff88;
+  --warning-yellow: #ffb800;
+  --error-red: #ff4757;
+  --text-primary: #e6eef9;
+  --text-secondary: #9aa5b1;
+  --text-muted: #6b7280;
+  --border-color: #2a2f55;
+  --border-hover: #3a4f7a;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --overlay-color: rgba(0, 0, 0, 0.5);
+
+  // Status Colors
+  --status-healthy: #00ff88;
+  --status-warning: #ffb800;
+  --status-error: #ff4757;
+  --status-info: #00d4ff;
+
+  // Chart Colors
+  --chart-cpu: #00d4ff;
+  --chart-memory: #00ff88;
+  --chart-disk: #ffb800;
+  --chart-network: #ff4757;
+  --chart-load: #a855f7;
+
+  // Spacing
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  // Border Radius
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  // Typography
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 32px;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  // Layout
+  --header-height: 60px;
+  --sidebar-width: 300px;
+  --sidebar-width-collapsed: 80px;
+  --status-height: 30%;
+  --status-height-mobile: 200px;
+
+  // Transitions
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+  --transition-slow: 500ms;
+
+  // Z-index
+  --z-dropdown: 1000;
+  --z-modal: 1050;
+  --z-tooltip: 1070;
+  --z-notification: 1100;
+}
+
+// Light theme variables
+[data-theme='light'] {
+  --primary-bg: #ffffff;
+  --secondary-bg: #f8fafc;
+  --tertiary-bg: #f1f5f9;
+  --accent-blue: #0284c7;
+  --success-green: #059669;
+  --warning-yellow: #d97706;
+  --error-red: #dc2626;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --border-color: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --overlay-color: rgba(0, 0, 0, 0.3);
+}

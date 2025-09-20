@@ -1,0 +1,393 @@
+.header {
+  background: linear-gradient(135deg, var(--secondary-bg) 0%, #1a1d2e 100%);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: var(--header-height);
+  position: relative;
+  z-index: 100;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  }
+}
+
+// Left Section
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 280px;
+}
+
+.menuButton {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: none; // Hidden by default, shown on mobile
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.logoSection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logoIcon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--accent-blue), #00a8cc);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+  flex-shrink: 0;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.logoText {
+  flex: 1;
+  min-width: 0;
+}
+
+.logoTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.logoSubtitle {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+// Center Section
+.headerCenter {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 32px;
+}
+
+.searchInput {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &:focus-within {
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  }
+}
+
+// Right Section
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 200px;
+  justify-content: flex-end;
+}
+
+.controlButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 13px;
+  font-weight: 500;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.controlButtonActive {
+  background: rgba(0, 212, 255, 0.15);
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+
+  &:hover {
+    background: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3);
+  }
+}
+
+.controlButtonInactive {
+  &:hover {
+    border-color: var(--status-warning);
+    color: var(--status-warning);
+  }
+}
+
+.controlIcon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.controlText {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.actionButton {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-blue);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(0, 212, 255, 0.3);
+  }
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--accent-blue), #00a8cc);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.userDetails {
+  flex: 1;
+  min-width: 0;
+}
+
+.userName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.userRole {
+  font-size: 11px;
+  color: var(--text-secondary);
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .headerLeft {
+    min-width: 240px;
+  }
+
+  .headerCenter {
+    margin: 0 24px;
+    max-width: 300px;
+  }
+
+  .logoSubtitle {
+    display: none;
+  }
+
+  .userRole {
+    display: none;
+  }
+
+  .controlText {
+    display: none;
+  }
+
+  .controlButton {
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 16px;
+  }
+
+  .headerLeft {
+    min-width: auto;
+  }
+
+  .headerCenter {
+    display: none;
+  }
+
+  .headerRight {
+    gap: 8px;
+    min-width: auto;
+  }
+
+  .menuButton {
+    display: flex;
+  }
+
+  .logoText {
+    display: none;
+  }
+
+  .userInfo {
+    padding: 6px 12px;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .userAvatar {
+    width: 28px;
+    height: 28px;
+  }
+
+  .actionButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .controlButton {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 12px;
+  }
+
+  .userInfo {
+    padding: 4px 8px;
+  }
+
+  .userAvatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .actionButton {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+// Animations
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  animation: slideDown 0.5s ease-out;
+}
+
+// Glass morphism effect for modern look
+@media (prefers-reduced-motion: no-preference) {
+  .header {
+    backdrop-filter: blur(20px);
+    background: linear-gradient(135deg,
+      rgba(26, 29, 46, 0.8) 0%,
+      rgba(15, 22, 41, 0.9) 100%
+    );
+  }
+}

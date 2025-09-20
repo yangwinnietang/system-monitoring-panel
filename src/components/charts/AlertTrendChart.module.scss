@@ -1,0 +1,284 @@
+.chartContainer {
+  background: var(--secondary-bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.timeRangeSelector {
+  display: flex;
+  background: var(--primary-bg);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.timeRangeButton {
+  padding: 6px 12px;
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-right: 1px solid var(--border-color);
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &:hover {
+    background: rgba(0, 212, 255, 0.1);
+    color: var(--text-primary);
+  }
+
+  &.active {
+    background: var(--accent-blue);
+    color: var(--primary-bg);
+  }
+}
+
+.alertStats {
+  display: flex;
+  gap: 6px;
+}
+
+.stat {
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--primary-bg);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.critical {
+  color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+}
+
+.unacknowledged {
+  color: var(--accent-blue);
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.chart {
+  flex: 1;
+  min-height: 300px;
+  width: 100%;
+
+  // Override ECharts styles for dark theme
+  :global(.echarts-tooltip) {
+    background: rgba(10, 14, 39, 0.95) !important;
+    border: 1px solid var(--accent-blue) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  :global(.echarts-legend) {
+    color: var(--text-secondary) !important;
+  }
+
+  :global(.echarts-axis-line) {
+    stroke: var(--border-color) !important;
+  }
+
+  :global(.echarts-axis-label) {
+    fill: var(--text-secondary) !important;
+  }
+
+  :global(.echarts-split-line) {
+    stroke: var(--border-color) !important;
+    stroke-dasharray: 4 4 !important;
+  }
+
+  :global(.echarts-dataZoom) {
+    fill: rgba(0, 212, 255, 0.1) !important;
+    stroke: var(--accent-blue) !important;
+  }
+
+  :global(.echarts-toolbox) {
+    color: var(--text-secondary) !important;
+
+    &:hover {
+      color: var(--accent-blue) !important;
+    }
+  }
+
+  // Smooth line animations
+  :global(.echarts-line) {
+    transition: all 0.3s ease !important;
+  }
+
+  :global(.echarts-line:hover) {
+    filter: brightness(1.2) !important;
+  }
+}
+
+// Loading state
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--text-secondary);
+  font-size: 14px;
+
+  &::before {
+    content: '加载告警数据...';
+  }
+}
+
+// Animation for data updates
+@keyframes chartUpdate {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+.updating {
+  animation: chartUpdate 0.5s ease-in-out;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .chartContainer {
+    padding: 15px;
+  }
+
+  .chartHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .chart {
+    min-height: 250px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .timeRangeButton {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .stat {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .chart {
+    min-height: 200px;
+  }
+
+  .chartContainer {
+    padding: 12px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  .timeRangeSelector {
+    width: 100%;
+  }
+
+  .timeRangeButton {
+    flex: 1;
+    text-align: center;
+  }
+
+  .alertStats {
+    justify-content: center;
+  }
+}
+
+// Empty state
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: var(--text-secondary);
+  text-align: center;
+
+  .emptyIcon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .emptyText {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .emptyHint {
+    font-size: 12px;
+    margin-top: 8px;
+    opacity: 0.7;
+  }
+}
+
+// Print styles
+@media print {
+  .chartContainer {
+    background: white !important;
+    border: 1px solid #ccc !important;
+    color: black !important;
+  }
+
+  .title {
+    color: black !important;
+  }
+
+  .timeRangeButton {
+    border-color: #999 !important;
+    color: #333 !important;
+
+    &.active {
+      background: #0066cc !important;
+      color: white !important;
+    }
+  }
+
+  .stat {
+    background: #f0f0f0 !important;
+    color: #333 !important;
+  }
+}
