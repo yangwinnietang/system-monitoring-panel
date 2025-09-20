@@ -87,23 +87,9 @@ npm install
 npm run dev
 ```
 
-### Build Production Version
+### Detailed Running Guide
 
-```bash
-npm run build
-```
-
-### Preview Production Version
-
-```bash
-npm run preview
-```
-
-### Code Linting
-
-```bash
-npm run lint
-```
+For more detailed installation, configuration, and deployment instructions, please refer to the [Running Guide](./RUNNING_GUIDE_EN.md).
 
 ## 🔧 Port Configuration
 
